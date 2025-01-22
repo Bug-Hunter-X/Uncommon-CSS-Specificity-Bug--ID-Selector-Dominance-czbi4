@@ -1,0 +1,17 @@
+The following CSS code snippet demonstrates an uncommon error related to the specificity of CSS selectors:
+
+```css
+#myElement {
+  color: blue;
+}
+
+.myElement {
+  color: red;
+}
+
+#myElement.myElement {
+  color: green; /* This rule will not override the #myElement rule */
+}
+```
+
+In this scenario, we might expect the `#myElement.myElement` rule to override the `#myElement` rule due to its higher specificity.  However, this is incorrect.  CSS specificity works such that when there is an ID selector involved, a class selector will never override it even if it is combined with the ID selector.  The result is that the text will remain blue, as the first rule is considered to have a higher specificity. 
