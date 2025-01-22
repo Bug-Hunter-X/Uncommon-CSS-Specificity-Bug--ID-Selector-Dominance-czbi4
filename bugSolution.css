@@ -1,0 +1,45 @@
+To correctly override the ID selector's styling, we need to either remove the ID selector or increase the specificity of the overriding rule using more specific selectors, or more important selectors ( like `!important`) 
+
+Here's how you can solve this issue:
+
+**Solution 1:  Avoid the conflict by only using one selector**
+
+```css
+#myElement {
+  color: green;
+}
+```
+
+**Solution 2: Using `!important` (Less Recommended):**
+
+```css
+#myElement {
+  color: blue;
+}
+
+.myElement {
+  color: red;
+}
+
+#myElement.myElement {
+  color: green !important; 
+}
+```
+
+**Solution 3: Using a more specific selector:**
+
+```css
+#myElement {
+  color: blue;
+}
+
+.myElement {
+  color: red;
+}
+
+#myElement.myElement.anotherClass {
+  color: green; 
+}
+```
+
+The use of `!important` should be avoided if possible as it can lead to harder to maintain CSS.
